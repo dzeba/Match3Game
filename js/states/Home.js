@@ -17,6 +17,7 @@ Match3.HomeState = {
         this.game.add.sprite(140, this.game.world.centerY + 250, 'play');
 
         if(this.message) {
+
             this.game.add.sprite(50, this.game.world.centerY, 'timeUp');
 
         }

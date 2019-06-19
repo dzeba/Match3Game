@@ -9,10 +9,16 @@ Match3.PreloadState = {
         this.preloadBar.scale.setTo(100, 1);
         this.load.setPreloadSprite(this.preloadBar);
 
-
+        this.load.image('shadow', 'assets/images/game/shadow.png');
+        this.load.image('hand', 'assets/images/game/hand.png');
         this.load.image('play', 'assets/images/btn-play.png');
-        this.load.image('particle', 'assets/images/particles/particle_ex3.png');
-
+        this.load.image('particle1', 'assets/images/particles/particle-1.png');
+        this.load.image('particle2', 'assets/images/particles/particle-2.png');
+        this.load.image('particle3', 'assets/images/particles/particle-3.png');
+        this.load.image('particle4', 'assets/images/particles/particle-4.png');
+        this.load.image('particle5', 'assets/images/particles/particle-5.png');
+        this.load.image('particle6', 'assets/images/particles/particle-6.png');
+        this.load.image('volume', 'assets/images/btn-sfx.png');
         this.load.image('logo', 'assets/images/donuts_logo.png');
         this.load.image('timeUp', 'assets/images/text-timeup.png');
         this.load.image('block1', 'assets/images/game/gem-01.png');
@@ -24,6 +30,7 @@ Match3.PreloadState = {
         this.load.image('deadBlock', 'assets/images/game/shadow.png');
         this.load.image('background', 'assets/images/backgrounds/background.jpg');
         this.load.audio('backgroundAudio', 'assets/audio/background.mp3',);
+
 
 
     },

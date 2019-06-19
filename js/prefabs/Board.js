@@ -7,6 +7,8 @@ Match3.Board = function (state, rows, cols, blockVariations) {
     this.rows = rows;
     this.cols = cols;
     this.blockVariations = blockVariations;
+    this.score = 0;
+    this.gameOver = false;
 
     //main grid
     this.grid = [];
@@ -130,6 +132,7 @@ Match3.Board.prototype.isChained = function (block) {
     //left
     if (variation === this.grid[row][col - 1] && variation === this.grid[row][col - 2]) {
         isChained = true;
+
     }
 
     //right
@@ -176,13 +179,16 @@ Match3.Board.prototype.findAllChains = function () {
         for (j = 0; j < this.cols; j++) {
             if (this.isChained({row: i, col: j})) {
                 chained.push({row: i, col: j});
+
             }
+
         }
     }
 
     return chained;
 };
-let score=0;
+
+
 
 /*
 clear all the chains*/
@@ -191,16 +197,21 @@ Match3.Board.prototype.clearChains = function () {
     let chainedBlocks = this.findAllChains();
 
 
-
     chainedBlocks.forEach(function (block) {
+
+        this.state.getBlockFromColRow(block).kill({asset: 'block'+this.grid[block.row][block.col]});
 
         this.grid[block.row][block.col] = 0;
 
 
-        this.state.getBlockFromColRow(block).kill();
-        score += 10;
-        this.state.scoreText.setText('Score: ' + score);
-        this.score = score;
+
+
+        this.score += 20;
+        this.state.scoreText.setText('Score: ' + this.score);
+        if (this.gameOver){
+            this.score = 0;
+        }
+
 
     }, this);
 };
@@ -259,3 +270,6 @@ Match3.Board.prototype.updateGrid = function () {
     //repopulate the reserve
     this.populateReserveGrid();
 };
+Match3.Board.prototype.gameOverFunc = function () {
+
+}
